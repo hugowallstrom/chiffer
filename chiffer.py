@@ -1,15 +1,15 @@
 word = ""
-key = 53
+key = 12
 letters = []
 crypt = []
 meny = 0
 
 
-while meny != 5:
+while meny != 6:
     try: 
-        meny = int(input("\n 1. Kryptera \n 2. Decryptera \n 3. Ändra fras för krytpering \n 4. Ändra krypterings nyckel. \n 5. Avsluta \n Välj:"))
+        meny = int(input("\n 1. Kryptera \n 2. Decryptera \n 3. Ändra fras för krytpering \n 4. Ändra krypterings nyckel \n 5. Rensa fras och krypterad fras \n 6. Avsluta \n Välj:"))
     except:
-        print("använd siffra!")
+        print("Använd siffra!")
         meny = 0
     if meny == 1:
         if word == "":
@@ -20,15 +20,12 @@ while meny != 5:
         for l in letters:
             crypt.append(chr(l))
         print(crypt)
-        letters = []
-        crypt = []
-    
     elif meny == 2:
         if word == "":
             print("Ingen fras hittades.")
-        else:
-            for letter in word:
-                letters.append(ord(letter) + key) 
+        if letters == []:
+            print("Kryptering tom")
+        else: 
             for l in letters:
                 crypt.append(chr(l -key))
         print(crypt)
@@ -39,6 +36,8 @@ while meny != 5:
         key = int(input("Ange nyckel siffra för kryptering: "))
         print("Nyckel ändrad.")
     elif meny == 5:
-        break
+        letters = []
+        crypt = []
+        print("Kryptering rensad.")
     else:
-        print("Fel siffra, försök igen.")
+        print("Fel, försök igen.")
